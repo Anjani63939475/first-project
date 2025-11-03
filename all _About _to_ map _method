@@ -1,0 +1,72 @@
+import React from "react";
+
+const Pages = () => {
+  const myObject = { a: 1, b: 2, c: 3 };
+  const data = [
+    ["Aman", 25, "Developer"],
+    ["Rahul", 28, "Designer"],
+    ["Priya", 22, "Tester"],
+  ];
+
+  const myObjectdata = {
+    item1: { name: "Apple", price: 100, color: "Red" },
+    item2: { name: "Banana", price: 40, color: "Yellow" },
+    item3: { name: "Grapes", price: 60, color: "Green" },
+  };
+    {console.log(Object.entries(myObjectdata),"aaknak")}
+    console.log(Object.entries(myObject),"object")
+  return (
+    <div>
+      <div>
+        {Object.entries(myObject).map(([item1,item2])=>{
+          return(<>{item1}</>)
+        })}
+      </div>
+      <div>{
+        Object.entries(myObjectdata).map(([item1,item2])=>{
+          return(<>
+          <p>{item1}:{item2.name}</p>
+            <p>{item1}:{item2.price}</p>
+              <p>{item1}:{item2.color}</p></>)
+        })}</div>
+       <div>
+        {Object.entries(myObjectdata).map(([key,item]) => (
+          <div
+          
+            style={{
+              border: "1px solid #ccc",
+              margin: "10px 0",
+              padding: "10px",
+              borderRadius: "8px",
+            }}
+          >
+            <p><b>Name:</b> {item.name}</p>
+            <p><b>Price:</b> ₹{item.price}</p>
+            <p><b>Color:</b> {item.color}</p>
+          </div>
+        ))}
+      </div>
+      <h3>Map Method Example</h3>
+      <div>
+        {Object.entries(myObject).map(([key, value]) => (
+          <p key={key}>
+            {key}: {value}
+            {
+              console.log(Object.entries(myObject))
+            }
+          </p>
+        ))}
+      </div>
+      <div>{
+
+data.map((item,index)=>{
+  return(<>
+  <p>
+    {item[index]}</p></>)
+})
+}</div>
+    </div>
+  );
+};
+
+export default Pages;
