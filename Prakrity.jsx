@@ -584,40 +584,55 @@ Check now: https://192.168.23.18:5173
                               )}
                             </div>
 
-                            <div className="options">
-                              {questionData[currentStep].answers.map(
-                                (ans, i) => (
-                                  <label
-                                    key={i}
-                                    className={`option ${
-                                      answers[questionData[currentStep].id] ===
-                                      ans.answer
-                                        ? "selected"
-                                        : ""
-                                    }`}
-                                  >
-                                    <input
-                                      type="radio"
-                                      name={questionData[currentStep].id}
-                                      value={ans.answer}
-                                      checked={
-                                        answers[
-                                          questionData[currentStep].id
-                                        ] === ans.answer
-                                      }
-                                      onChange={() =>
-                                        handleSelect(
-                                          questionData[currentStep].id,
-                                          ans.answer,
-                                          ans.Option
-                                        )
-                                      }
-                                    />
-                                    {ans.Option}
-                                  </label>
-                                )
+                              <div className="options">
+                             {questionData[currentStep].answers.map(
+                                (ans, i) => {
+                                  const isSelected =
+                                    answers[questionData[currentStep].id]
+                                      ?.Answer === ans.answer;
+
+                                  return (
+                                    <label
+                                      key={i}
+                                      className="option"
+                                      style={{
+                                        padding: "15px",
+                                        border: `1px solid ${
+                                          isSelected ? "#618045" : "#e0e0e0"
+                                        }`,
+                                        borderRadius: "10px",
+                                        cursor: "pointer",
+                                        transition: "all 0.3s ease",
+                                        position: "relative", 
+
+                                        boxShadow: isSelected
+                                          ? "0 0 10px rgba(97, 128, 69, 0.4)"
+                                          : "none",
+                                        color: isSelected ? "#2e4a1b" : "#333",
+                                        fontWeight: isSelected ? "600" : "400",
+                                        marginBottom: "10px",
+                                      }}
+                                    >
+                                      <input
+                                        type="radio"
+                                        name={questionData[currentStep].id}
+                                        value={ans.answer}
+                                        checked={isSelected}
+                                        onChange={() =>
+                                          handleSelect(
+                                            questionData[currentStep].id,
+                                            ans.answer
+                                          )
+                                        }
+                                        style={{ display: "none" }}
+                                      />
+                                      {ans.Option}
+                                    </label>
+                                  );
+                                }
                               )}
                             </div>
+
 
                             <div className="buttons">
                               <button
@@ -745,6 +760,8 @@ Check now: https://192.168.23.18:5173
                   years.
                 </p>
               </div>
+
+
               <div className="col-lg-12">
                 <h2 className="about-title">What is Immunity in Ayurveda?</h2>
                 <p className="about-description">
